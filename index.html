@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abd allah Abo helal</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+      line-height:1.6;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:40px;
+      background:
+      linear-gradient(rgba(15,23,42,.8), rgba(15,23,42,.9)),
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200') center/cover;
+    }
+
+    .hero{
+      max-width:800px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    .hero h2{
+      font-size:1.5rem;
+      color:#cbd5e1;
+      margin-bottom:25px;
+      font-weight:400;
+    }
+
+    .hero p{
+      font-size:1.1rem;
+      color:#e2e8f0;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 28px;
+      background:#38bdf8;
+      color:#0f172a;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:bold;
+      transition:.3s;
+    }
+
+    .btn:hover{
+      background:#0ea5e9;
+      transform:translateY(-3px);
+    }
+
+    section{
+      padding:80px 10%;
+    }
+
+    .section-title{
+      font-size:2.2rem;
+      margin-bottom:30px;
+      color:#38bdf8;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+
+    .card{
+      background:#1e293b;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 0 20px rgba(0,0,0,.2);
+    }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:15px;
+    }
+
+    .skill{
+      background:#334155;
+      padding:10px 18px;
+      border-radius:999px;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:#020617;
+      color:#94a3b8;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Abd allah Abo helal</h1>
+
+      <h2>Computer Engineering Student | Front-End Developer</h2>
+
+      <p>
+        Second-year Computer Engineering student with a strong focus on
+        front-end development and modern web technologies.
+        Passionate about building clean, responsive, and user-friendly web applications.
+      </p>
+
+      <a 
+        class="btn"
+        href="https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/"
+        target="_blank"
+      >
+        View LinkedIn
+      </a>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-title">About</h2>
+
+    <div class="about">
+
+      <div class="card">
+        <h3>Education</h3>
+        <br>
+
+        <p>
+          Studying Computer Engineering at
+          Al-Qasemi Academic College.
+        </p>
+
+        <br>
+
+        <p>
+          Expected academic period:
+          2024 - 2026
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Location</h3>
+        <br>
+
+        <p>
+          Umm al-Fahm, Haifa District, Israel
+        </p>
+
+        <br>
+
+        <p>
+          Interested in software engineering,
+          UI/UX, front-end systems,
+          and scalable web applications.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">c#</div>
+      <div class="skill">Git</div>
+      <div class="skill">UI Design</div>
+      <div class="skill">Responsive Design</div>
+      <div class="skill">Front-End Development</div>
+      <div class="skill">Problem Solving</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Contact</h2>
+
+    <div class="card">
+      <p>
+        LinkedIn:
+      </p>
+
+      <br>
+
+      <a 
+        class="btn"
+        href="https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/"
+        target="_blank"
+      >
+        Connect on LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      © 2026 Abd allah Abo helal. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
