@@ -1,0 +1,364 @@
+// ----------------------------------------------------
+// Structured Data Layer
+// ----------------------------------------------------
+const PORTFOLIO_DATA = {
+  about: "I am a second-year Computer Engineering student at Al-Qasemi Academic College with a focus on high-performance front-end systems, clean software architectures, and hardware-software integration. Seeking internship and junior software developer opportunities.",
+  projects: [
+    {
+      name: "CPU Scheduling Algorithm Visualizer",
+      description: "Interactive visual simulator demonstrating CPU process scheduling (FIFO, Shortest Job First, Round Robin) with real-time SVG Gantt charts and performance statistics.",
+      tech: ["JavaScript", "HTML5", "CSS3", "SVG"],
+      github: "https://github.com/abd-abo-helal",
+      live: "#"
+    },
+    {
+      name: "ChronoDiff Git Explorer",
+      description: "Lightweight git diff renderer and directory timeline comparator implemented entirely with vanilla JS to maximize loading and parsing speeds.",
+      tech: ["JavaScript", "HTML5", "CSS3"],
+      github: "https://github.com/abd-abo-helal",
+      live: "#"
+    },
+    {
+      name: "System Hardware Monitoring Dashboard",
+      description: "A dashboard interface simulating real-time telemetry stats (CPU load, clock speed, temperatures) utilizing fast HTML5 Canvas rendering libraries.",
+      tech: ["React.js", "Chart.js", "C#", "REST API"],
+      github: "https://github.com/abd-abo-helal",
+      live: "#"
+    }
+  ],
+  skills: {
+    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Responsive Layouts"],
+    backend: ["C#", "ASP.NET Core", "Node.js", "REST APIs", "SQL"],
+    tools: ["Git & GitHub", "Docker", "Assembly (x86)", "Embedded C / Arduino"]
+  },
+  timeline: [
+    {
+      year: "2024",
+      title: "Began Computer Engineering",
+      institution: "Al-Qasemi Academic College",
+      description: "Focused on assembly programming, computer architectures, digital systems logic, and foundational programming algorithms."
+    },
+    {
+      year: "2025",
+      title: "Core Software & Frontend Development",
+      institution: "Personal & Academic Projects",
+      description: "Built responsive interactive browser tools, studied algorithms complexity, software testing, and object-oriented systems design."
+    },
+    {
+      year: "2026",
+      title: "Advanced Front-End & System Integrations",
+      institution: "Current Focus",
+      description: "Developing modern UX systems, high-efficiency client-side rendering frameworks, and interfacing web controllers with hardware APIs."
+    }
+  ]
+};
+
+// ----------------------------------------------------
+// CLI Terminal State
+// ----------------------------------------------------
+const terminalState = {
+  history: [],
+  historyIndex: -1
+};
+
+let terminalOutput;
+let terminalInput;
+
+// ----------------------------------------------------
+// Dynamic Page Renderers
+// ----------------------------------------------------
+function initDynamicContent() {
+  // 1. Render Projects Grid
+  const projectsGrid = document.getElementById("projectsGrid");
+  if (projectsGrid) {
+    projectsGrid.innerHTML = PORTFOLIO_DATA.projects.map(p => `
+      <div class="project-card">
+        <div class="project-top">
+          <h3>${p.name}</h3>
+          <p class="project-description">${p.description}</p>
+          <div class="project-tech">
+            ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link">
+            <i class="fa-brands fa-github"></i> Source Code
+          </a>
+          <a href="${p.live}" class="project-link">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 2. Render Skills Grid
+  const skillsWrapper = document.getElementById("skillsWrapper");
+  if (skillsWrapper) {
+    skillsWrapper.innerHTML = `
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-laptop-code"></i> Frontend</h3>
+        <div class="skills-list">
+          ${PORTFOLIO_DATA.skills.frontend.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+        </div>
+      </div>
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-server"></i> Backend & Systems</h3>
+        <div class="skills-list">
+          ${PORTFOLIO_DATA.skills.backend.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+        </div>
+      </div>
+      <div class="skills-category">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i> Hardware & Tools</h3>
+        <div class="skills-list">
+          ${PORTFOLIO_DATA.skills.tools.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // 3. Render Timeline
+  const timelineContainer = document.getElementById("timelineContainer");
+  if (timelineContainer) {
+    timelineContainer.innerHTML = PORTFOLIO_DATA.timeline.map(item => `
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">${item.year}</div>
+        <h3 class="timeline-title">${item.title}</h3>
+        <div class="timeline-institution">${item.institution}</div>
+        <p class="timeline-description">${item.description}</p>
+      </div>
+    `).join('');
+  }
+}
+
+// ----------------------------------------------------
+// CLI Helper Printer (Type-Safe Factory)
+// ----------------------------------------------------
+function printLine(content, type = "default") {
+  if (!terminalOutput) return;
+  const line = document.createElement("div");
+  line.className = `terminal-line line-${type}`;
+  
+  if (content instanceof HTMLElement) {
+    line.appendChild(content);
+  } else {
+    line.innerHTML = content;
+  }
+  
+  terminalOutput.appendChild(line);
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+// ----------------------------------------------------
+// Terminal Command Registry
+// ----------------------------------------------------
+const terminalCommands = {
+  help: () => {
+    printLine("Available commands:", "success");
+    printLine("  about      - Developer summary and objective", "info");
+    printLine("  projects   - Show highlights of featured applications", "info");
+    printLine("  skills     - List technical skillset categories", "info");
+    printLine("  contact    - Print direct ways to get in touch", "info");
+    printLine("  clear      - Clear the console logs screen", "info");
+  },
+  about: () => {
+    printLine(PORTFOLIO_DATA.about, "default");
+  },
+  projects: () => {
+    PORTFOLIO_DATA.projects.forEach(p => {
+      printLine(`• ${p.name} - ${p.description}`, "success");
+      printLine(`  Tech: ${p.tech.join(', ')}`, "info");
+    });
+  },
+  skills: () => {
+    printLine("Frontend Tools:", "success");
+    printLine(`  ${PORTFOLIO_DATA.skills.frontend.join(', ')}`, "default");
+    printLine("Backend & Systems:", "success");
+    printLine(`  ${PORTFOLIO_DATA.skills.backend.join(', ')}`, "default");
+    printLine("Tools & Hardware Integrations:", "success");
+    printLine(`  ${PORTFOLIO_DATA.skills.tools.join(', ')}`, "default");
+  },
+  contact: () => {
+    printLine("Connect with Abdallah:", "success");
+    printLine("  LinkedIn: https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/", "info");
+    printLine("  GitHub:   https://github.com/abd-abo-helal", "info");
+    printLine("  Email:    abdallah.abohelal.eng@gmail.com", "info");
+  },
+  clear: () => {
+    if (terminalOutput) {
+      terminalOutput.innerHTML = "";
+    }
+  }
+};
+
+// ----------------------------------------------------
+// Terminal Engine Pipeline
+// ----------------------------------------------------
+function executeCommand(inputString) {
+  const trimmed = inputString.trim();
+  
+  // 1. Output the echo of prompt command
+  const promptDiv = document.createElement("div");
+  promptDiv.className = "terminal-line line-command";
+  promptDiv.innerHTML = `<span class="prompt-user">visitor@abdallah:~$ </span><span class="prompt-cmd"></span>`;
+  promptDiv.querySelector(".prompt-cmd").textContent = trimmed;
+  printLine(promptDiv);
+
+  if (!trimmed) {
+    return;
+  }
+
+  // Add to command history
+  if (terminalState.history.length === 0 || terminalState.history[terminalState.history.length - 1] !== trimmed) {
+    terminalState.history.push(trimmed);
+  }
+  terminalState.historyIndex = -1;
+
+  // Command Router
+  const lower = trimmed.toLowerCase();
+  if (terminalCommands.hasOwnProperty(lower)) {
+    terminalCommands[lower]();
+  } else {
+    printLine(`Unknown command: '${trimmed}'. Type 'help' to see list of valid commands.`, "error");
+  }
+}
+
+function focusTerminal() {
+  if (terminalInput) {
+    terminalInput.focus();
+  }
+}
+
+// Terminal Initial Setup
+function initTerminal() {
+  terminalOutput = document.getElementById("terminalOutput");
+  terminalInput = document.getElementById("terminalInput");
+
+  if (!terminalInput || !terminalOutput) return;
+
+  printLine("Welcome to Abdallah Abo Helal's interactive CLI console v1.0.0", "success");
+  printLine("Type 'help' to view the list of available commands.", "info");
+  printLine(" ", "default");
+  
+  // Focus listener and UI classes toggle
+  const container = document.querySelector(".terminal-container");
+  if (container) {
+    terminalInput.addEventListener("focus", () => {
+      container.style.borderColor = "var(--border-focus)";
+    });
+    terminalInput.addEventListener("blur", () => {
+      container.style.borderColor = "var(--border)";
+    });
+  }
+
+  // Terminal Keyboard Navigation Logic
+  terminalInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const value = terminalInput.value;
+      executeCommand(value);
+      terminalInput.value = "";
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (terminalState.history.length > 0) {
+        if (terminalState.historyIndex === -1) {
+          terminalState.historyIndex = terminalState.history.length - 1;
+        } else if (terminalState.historyIndex > 0) {
+          terminalState.historyIndex--;
+        }
+        terminalInput.value = terminalState.history[terminalState.historyIndex];
+      }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (terminalState.history.length > 0) {
+        if (terminalState.historyIndex !== -1 && terminalState.historyIndex < terminalState.history.length - 1) {
+          terminalState.historyIndex++;
+          terminalInput.value = terminalState.history[terminalState.historyIndex];
+        } else {
+          terminalState.historyIndex = -1;
+          terminalInput.value = "";
+        }
+      }
+    }
+  });
+}
+
+// ----------------------------------------------------
+// UI - Simple Contact Form Client-Side Validation
+// ----------------------------------------------------
+function handleContactSubmit(event) {
+  event.preventDefault();
+  
+  const nameVal = document.getElementById("formName").value.trim();
+  const emailVal = document.getElementById("formEmail").value.trim();
+  const msgVal = document.getElementById("formMessage").value.trim();
+  
+  const nameFeedback = document.getElementById("nameFeedback");
+  const emailFeedback = document.getElementById("emailFeedback");
+  const messageFeedback = document.getElementById("messageFeedback");
+  
+  let isValid = true;
+  
+  // Validate Name
+  if (!nameVal) {
+    nameFeedback.style.display = "block";
+    isValid = false;
+  } else {
+    nameFeedback.style.display = "none";
+  }
+  
+  // Validate Email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailVal || !emailRegex.test(emailVal)) {
+    emailFeedback.style.display = "block";
+    isValid = false;
+  } else {
+    emailFeedback.style.display = "none";
+  }
+  
+  // Validate Message
+  if (!msgVal) {
+    messageFeedback.style.display = "block";
+    isValid = false;
+  } else {
+    messageFeedback.style.display = "none";
+  }
+  
+  if (isValid) {
+    // Hide form inputs, show custom styled success state directly
+    document.getElementById("contactForm").style.display = "none";
+    document.getElementById("formSuccess").style.display = "block";
+  }
+}
+
+// ----------------------------------------------------
+// Scroll Indicator Active Link Handler
+// ----------------------------------------------------
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (window.scrollY >= (sectionTop - 120)) {
+      current = section.getAttribute("id");
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").slice(1) === current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// ----------------------------------------------------
+// App Initialization
+// ----------------------------------------------------
+window.addEventListener("DOMContentLoaded", () => {
+  initDynamicContent();
+  initTerminal();
+});

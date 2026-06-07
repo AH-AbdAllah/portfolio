@@ -3,238 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abd allah Abo helal</title>
+  <title>Abdallah Abo Helal | Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Abdallah Abo Helal, a Computer Engineering Student and Front-End Developer. Explorable interactive terminal interface showcasing software engineering and system architecture skills." />
+  <meta name="keywords" content="Abdallah Abo Helal, Computer Engineering, Front-End Developer, Portfolio, Software Engineer, CLI Portfolio, Al-Qasemi Academic College" />
+  <meta name="author" content="Abdallah Abo Helal" />
+  
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Abdallah Abo Helal | Computer Engineering Student & Developer" />
+  <meta property="og:description" content="Explore my portfolio featuring a lightweight interactive CLI terminal, engineering projects, and technical skills." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/abd-abo-helal" />
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-    }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    body{
-      background:#0f172a;
-      color:white;
-      line-height:1.6;
-    }
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    header{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      padding:40px;
-      background:
-      linear-gradient(rgba(15,23,42,.8), rgba(15,23,42,.9)),
-      url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200') center/cover;
-    }
+  <!-- Link to External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 
-    .hero{
-      max-width:800px;
-    }
+  <!-- JSON-LD Person Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abdallah Abo Helal",
+    "jobTitle": "Computer Engineering Student & Front-End Developer",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Al-Qasemi Academic College"
+    },
+    "url": "https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/",
+    "sameAs": [
+      "https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/",
+      "https://github.com/abd-abo-helal"
+    ]
+  }
+  </script>
 
-    .hero h1{
-      font-size:4rem;
-      margin-bottom:15px;
-      color:#38bdf8;
-    }
-
-    .hero h2{
-      font-size:1.5rem;
-      color:#cbd5e1;
-      margin-bottom:25px;
-      font-weight:400;
-    }
-
-    .hero p{
-      font-size:1.1rem;
-      color:#e2e8f0;
-      margin-bottom:35px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:14px 28px;
-      background:#38bdf8;
-      color:#0f172a;
-      text-decoration:none;
-      border-radius:12px;
-      font-weight:bold;
-      transition:.3s;
-    }
-
-    .btn:hover{
-      background:#0ea5e9;
-      transform:translateY(-3px);
-    }
-
-    section{
-      padding:80px 10%;
-    }
-
-    .section-title{
-      font-size:2.2rem;
-      margin-bottom:30px;
-      color:#38bdf8;
-    }
-
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-    }
-
-    .card{
-      background:#1e293b;
-      padding:30px;
-      border-radius:20px;
-      box-shadow:0 0 20px rgba(0,0,0,.2);
-    }
-
-    .skills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:15px;
-    }
-
-    .skill{
-      background:#334155;
-      padding:10px 18px;
-      border-radius:999px;
-    }
-
-    footer{
-      text-align:center;
-      padding:30px;
-      background:#020617;
-      color:#94a3b8;
-    }
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:2.5rem;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
-
-    }
-  </style>
+  <!-- Link to External JavaScript logic -->
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
+  <!-- Floating Sticky Navigation -->
   <header>
-    <div class="hero">
-      <h1>Abd allah Abo helal - new</h1>
-
-      <h2>Computer Engineering Student | Front-End Developer</h2>
-
-      <p>
-        Second-year Computer Engineering student with a strong focus on
-        front-end development and modern web technologies.
-        Passionate about building clean, responsive, and user-friendly web applications.
-      </p>
-
-      <a 
-        class="btn"
-        href="https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/"
-        target="_blank"
-      >
-        View LinkedIn
+    <nav class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-code"></i> <span>abdallah.dev</span>
       </a>
-    </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#terminal">Terminal</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section>
-    <h2 class="section-title">About</h2>
-
-    <div class="about">
-
-      <div class="card">
-        <h3>Education</h3>
-        <br>
-
-        <p>
-          Studying Computer Engineering at
-          Al-Qasemi Academic College.
-        </p>
-
-        <br>
-
-        <p>
-          Expected academic period:
-          2024 - 2026
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Location</h3>
-        <br>
-
-        <p>
-          Umm al-Fahm, Haifa District, Israel
-        </p>
-
-        <br>
-
-        <p>
-          Interested in software engineering,
-          UI/UX, front-end systems,
-          and scalable web applications.
-        </p>
-      </div>
-
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="status-badge">
+      <span class="pulse"></span> Open for Internship & Junior Positions
     </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Skills</h2>
-
-    <div class="skills">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">React</div>
-      <div class="skill">Node.js</div>
-      <div class="skill">c#</div>
-      <div class="skill">Git</div>
-      <div class="skill">UI Design</div>
-      <div class="skill">Responsive Design</div>
-      <div class="skill">Front-End Development</div>
-      <div class="skill">Problem Solving</div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Contact</h2>
-
-    <div class="card">
-      <p>
-        LinkedIn:
-      </p>
-
-      <br>
-
-      <a 
-        class="btn"
-        href="https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/"
-        target="_blank"
-      >
-        Connect on LinkedIn
+    <h1 class="hero-title">Abdallah Abo Helal</h1>
+    <h2 class="hero-subtitle">Computer Engineering Student | Front-End Developer</h2>
+    <p class="hero-description">
+      Second-year student at Al-Qasemi Academic College. Dedicated to building high-performance, clean front-end interfaces and exploring the intersection of software systems and computer hardware.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        <i class="fa-solid fa-briefcase"></i> View Projects
+      </a>
+      <a href="#terminal" class="btn btn-secondary" onclick="focusTerminal()">
+        <i class="fa-solid fa-terminal"></i> Interactive CLI
       </a>
     </div>
   </section>
 
-  <footer>
-    <p>
-      © 2026 Abd allah Abo helal. All rights reserved.
-    </p>
-  </footer>
+  <!-- Interactive Terminal Section -->
+  <section id="terminal">
+    <div class="section-header">
+      <h2 class="section-title">Terminal Console</h2>
+    </div>
+    
+    <div class="terminal-container" onclick="focusTerminal()">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+        </div>
+        <div class="terminal-title">visitor@abdallah-abo-helal:~</div>
+        <div style="width: 48px;"></div>
+      </div>
+      
+      <div class="terminal-output" id="terminalOutput">
+        <!-- Lines will be dynamically generated here -->
+      </div>
+      
+      <div class="terminal-input-container">
+        <span class="prompt-user">visitor@abdallah:~$</span>
+        <input 
+          type="text" 
+          class="terminal-input" 
+          id="terminalInput" 
+          autofocus 
+          autocomplete="off" 
+          spellcheck="false"
+          placeholder="type 'help'..."
+        />
+      </div>
+    </div>
+  </section>
 
+  <!-- Projects Grid Section -->
+  <section id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Dynamically generated projects cards -->
+    </div>
+  </section>
+
+  <!-- Skills Grid Section -->
+  <section id="skills">
+    <div class="section-header">
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="skills-wrapper" id="skillsWrapper">
+      <!-- Dynamically generated skills -->
+    </div>
+  </section>
+
+  <!-- Education Timeline Section -->
+  <section id="timeline">
+    <div class="section-header">
+      <h2 class="section-title">Timeline</h2>
+    </div>
+    <div class="timeline-container" id="timelineContainer">
+      <!-- Dynamically generated timeline -->
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact">
+    <div class="section-header">
+      <h2 class="section-title">Get In Touch</h2>
+    </div>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <p>
+          I am always interested in discussing new opportunities, open-source projects, or software engineering challenges. Feel free to contact me directly or use the form.
+        </p>
+        <div class="contact-methods">
+          <a href="https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/" target="_blank" rel="noopener noreferrer" class="contact-method">
+            <i class="fa-brands fa-linkedin"></i>
+            <div>
+              <span>Professional Network</span>
+              <p>LinkedIn Profile</p>
+            </div>
+          </a>
+          <a href="https://github.com/abd-abo-helal" target="_blank" rel="noopener noreferrer" class="contact-method">
+            <i class="fa-brands fa-github"></i>
+            <div>
+              <span>Code Repositories</span>
+              <p>GitHub Profile</p>
+            </div>
+          </a>
+          <a href="mailto:abdallah.abohelal.eng@gmail.com" class="contact-method">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <span>Email Me</span>
+              <p>abdallah.abohelal.eng@gmail.com</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="contact-form-card">
+        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="formName">Name</label>
+            <input type="text" id="formName" class="form-control" placeholder="Your Name" />
+            <div class="form-feedback" id="nameFeedback">Name is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="formEmail">Email</label>
+            <input type="email" id="formEmail" class="form-control" placeholder="you@example.com" />
+            <div class="form-feedback" id="emailFeedback">A valid email address is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="formMessage">Message</label>
+            <textarea id="formMessage" class="form-control" placeholder="Your message..."></textarea>
+            <div class="form-feedback" id="messageFeedback">Message cannot be empty.</div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <i class="fa-solid fa-circle-check"></i> &nbsp; Message received successfully! Thank you for reaching out.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Abdallah Abo Helal. Optimized for technical recruitment.</p>
+  </footer>
 </body>
 </html>
