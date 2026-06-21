@@ -5,30 +5,44 @@ const PORTFOLIO_DATA = {
   about: "I am a second-year Computer Engineering student at Al-Qasemi Academic College with a focus on high-performance front-end systems, clean software architectures, and hardware-software integration. Seeking internship and junior software developer opportunities.",
   projects: [
     {
-      name: "CPU Scheduling Algorithm Visualizer",
-      description: "Interactive visual simulator demonstrating CPU process scheduling (FIFO, Shortest Job First, Round Robin) with real-time SVG Gantt charts and performance statistics.",
+      name: "C# Interactive Academy",
+      description: "Interactive visual learning platform for mastering C# and .NET from first principles. Features real-time visualizers for generics, binary trees, stack/queue simulators, memory/GC engines, and a live workbench with a simulated terminal compiler.",
       tech: ["JavaScript", "HTML5", "CSS3", "SVG"],
-      github: "https://github.com/abd-abo-helal",
-      live: "#"
+      github: "https://github.com/AH-AbdAllah/C-",
+      live: "https://csharp-five.vercel.app/"
+    },
+    {
+      name: "DevToolBox",
+      description: "Secure, offline-first developer command center. A suite of 19+ client-side tools including a JSON formatter/validator, JWT decoder, Base64 encoder, RSA/AES encryption sandbox, UUID generator, and AI-powered GitHub repo analyzer.",
+      tech: ["Next.js", "React.js", "Tailwind CSS", "Web APIs", "Client-Side Cryptography"],
+      github: "https://github.com/AH-AbdAllah/DevToolBox",
+      live: "https://dev-tool-box-chi.vercel.app"
+    },
+    {
+      name: "TaskFlow Enterprise API",
+      description: "Enterprise-grade project and sprint task management system. Implements PostgreSQL-backed real-time audit logs, Kanban board routing, project analytics dashboards, team membership systems, and JWT-based authentication.",
+      tech: ["C#", "ASP.NET Core", "PostgreSQL", "REST API", "Entity Framework Core", "JWT Auth"],
+      github: "https://github.com/AH-AbdAllah/Task-Management-Enterprise-API",
+      live: "https://task-management-api-xxiu.onrender.com"
+    },
+    {
+      name: "Aetheria Consciousness Network",
+      description: "A full-stack social media API and platform conceptualized as a Constellation of Consciousness. Supports anonymous thought sharing, frequency-based content routing, real-time feedback loops, and relational schema structures.",
+      tech: ["Node.js", "Express.js", "REST API", "JavaScript", "HTML5", "CSS3"],
+      github: "https://github.com/AH-AbdAllah/Social-Media-API",
+      live: "https://social-media-api-t4ky.onrender.com"
     },
     {
       name: "ChronoDiff Git Explorer",
-      description: "Lightweight git diff renderer and directory timeline comparator implemented entirely with vanilla JS to maximize loading and parsing speeds.",
-      tech: ["JavaScript", "HTML5", "CSS3"],
-      github: "https://github.com/abd-abo-helal",
-      live: "#"
-    },
-    {
-      name: "System Hardware Monitoring Dashboard",
-      description: "A dashboard interface simulating real-time telemetry stats (CPU load, clock speed, temperatures) utilizing fast HTML5 Canvas rendering libraries.",
-      tech: ["React.js", "Chart.js", "C#", "REST API"],
-      github: "https://github.com/abd-abo-helal",
-      live: "#"
+      description: "Lightweight git diff renderer and directory timeline comparator, built entirely with vanilla JavaScript for maximum speed. Provides high-performance parsing of git modifications and side-by-side directory diff comparisons.",
+      tech: ["JavaScript", "HTML5", "CSS3", "Git API"],
+      github: "https://github.com/AH-AbdAllah/ChronoDiff",
+      live: null
     }
   ],
   skills: {
-    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Responsive Layouts"],
-    backend: ["C#", "ASP.NET Core", "Node.js", "REST APIs", "SQL"],
+    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "Responsive Layouts"],
+    backend: ["C#", "ASP.NET Core", "Node.js", "REST APIs", "SQL", "PostgreSQL", "Entity Framework Core"],
     tools: ["Git & GitHub", "Docker", "Assembly (x86)", "Embedded C / Arduino"]
   },
   timeline: [
@@ -84,9 +98,9 @@ function initDynamicContent() {
           <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link">
             <i class="fa-brands fa-github"></i> Source Code
           </a>
-          <a href="${p.live}" class="project-link">
+          ${p.live ? `<a href="${p.live}" target="_blank" rel="noopener noreferrer" class="project-link">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
-          </a>
+          </a>` : ''}
         </div>
       </div>
     `).join('');
