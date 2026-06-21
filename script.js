@@ -41,7 +41,7 @@ const PORTFOLIO_DATA = {
     }
   ],
   skills: {
-    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "Responsive Layouts"],
+    frontend: ["HTML5", "CSS3", "JavaScript (ES6+)", "React", "React Native", "Next.js", "Tailwind CSS", "Responsive Layouts"],
     backend: ["C#", "ASP.NET Core", "Node.js", "REST APIs", "SQL", "PostgreSQL", "Entity Framework Core"],
     tools: ["Git & GitHub", "Docker", "Assembly (x86)", "Embedded C / Arduino"]
   },
