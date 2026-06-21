@@ -26,9 +26,9 @@ const PORTFOLIO_DATA = {
       live: "https://task-management-api-xxiu.onrender.com"
     },
     {
-      name: "Aetheria Consciousness Network",
-      description: "A full-stack social media API and platform conceptualized as a Constellation of Consciousness. Supports anonymous thought sharing, frequency-based content routing, real-time feedback loops, and relational schema structures.",
-      tech: ["Node.js", "Express.js", "REST API", "JavaScript", "HTML5", "CSS3"],
+      name: "Social Media API",
+      description: "Production-ready social media REST API featuring JWT dual-token auth, personalized feeds, follow system, posts with image uploads (Cloudinary), nested comments, likes, saved posts, and user search. Dual-database architecture using PostgreSQL (Prisma ORM) for relational data and MongoDB (Mongoose) for activity logs.",
+      tech: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "JWT Auth", "Cloudinary", "Zod"],
       github: "https://github.com/AH-AbdAllah/Social-Media-API",
       live: "https://social-media-api-t4ky.onrender.com"
     },
@@ -196,8 +196,8 @@ const terminalCommands = {
   contact: () => {
     printLine("Connect with Abdallah:", "success");
     printLine("  LinkedIn: https://www.linkedin.com/in/abd-allah-abo-helal-a6677434a/", "info");
-    printLine("  GitHub:   https://github.com/abd-abo-helal", "info");
-    printLine("  Email:    abdallah.abohelal.eng@gmail.com", "info");
+    printLine("  GitHub:   https://github.com/AH-AbdAllah", "info");
+    printLine("  Email:    abdabohelal@gmail.com", "info");
   },
   clear: () => {
     if (terminalOutput) {
@@ -300,7 +300,7 @@ function initTerminal() {
 // ----------------------------------------------------
 // UI - Simple Contact Form Client-Side Validation
 // ----------------------------------------------------
-function handleContactSubmit(event) {
+async function handleContactSubmit(event) {
   event.preventDefault();
   
   const nameVal = document.getElementById("formName").value.trim();
@@ -339,9 +339,30 @@ function handleContactSubmit(event) {
   }
   
   if (isValid) {
-    // Hide form inputs, show custom styled success state directly
-    document.getElementById("contactForm").style.display = "none";
-    document.getElementById("formSuccess").style.display = "block";
+    const submitBtn = event.target.querySelector("button[type='submit']");
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+    try {
+      const response = await fetch("https://formspree.io/f/xrewzyzz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nameVal, email: emailVal, message: msgVal })
+      });
+
+      if (response.ok) {
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("formSuccess").style.display = "block";
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      alert("Network error. Please check your connection and try again.");
+    }
   }
 }
 
