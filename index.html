@@ -65,8 +65,24 @@
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <!-- Mobile Navigation Menu -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="#terminal" onclick="closeMobileMenu()">Terminal</a></li>
+      <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
+      <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#timeline" onclick="closeMobileMenu()">Timeline</a></li>
+      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+      <li><a href="cv.html" target="_blank" onclick="closeMobileMenu()" class="mobile-nav-cv">View CV ↗</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero-section" id="home">
@@ -74,7 +90,7 @@
       <span class="pulse"></span> Open for Internship & Junior Positions
     </div>
     <h1 class="hero-title">Abdallah Abo Helal</h1>
-    <h2 class="hero-subtitle">Computer Engineering Student | Front-End Developer</h2>
+    <h2 class="hero-subtitle"><span id="typewriter"></span><span class="tw-cursor">|</span></h2>
     <p class="hero-description">
       Second-year student at Al-Qasemi Academic College. Dedicated to building high-performance, clean front-end interfaces and exploring the intersection of software systems and computer hardware.
     </p>
@@ -88,6 +104,20 @@
       <a href="cv.html" target="_blank" class="btn btn-secondary">
         <i class="fa-solid fa-file-lines"></i> View CV
       </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div><span class="stat-num" data-target="5">0</span><span class="stat-sign">+</span></div>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat-item">
+        <div><span class="stat-num" data-target="15">0</span><span class="stat-sign">+</span></div>
+        <span class="stat-label">Technologies</span>
+      </div>
+      <div class="stat-item">
+        <div><span class="stat-num" data-target="2">0</span></div>
+        <span class="stat-label">Years of Study</span>
+      </div>
     </div>
   </section>
 
@@ -189,6 +219,10 @@
               <span>Email Me</span>
               <p>abdabohelal@gmail.com</p>
             </div>
+            <button class="copy-btn" id="copyEmailBtn" onclick="copyEmail(event)" title="Copy email address">
+              <i class="fa-solid fa-copy"></i>
+              <span class="copy-tooltip">Copied!</span>
+            </button>
           </a>
         </div>
       </div>
@@ -226,5 +260,10 @@
   <footer>
     <p>© 2026 Abdallah Abo Helal. Optimized for technical recruitment.</p>
   </footer>
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
 </body>
 </html>

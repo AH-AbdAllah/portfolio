@@ -2,7 +2,7 @@
 
 A modern, dark-themed personal portfolio website featuring an **interactive CLI terminal**, a real projects showcase, skills grid, timeline, and a fully functional contact form.
 
-**Live at:** [abdallah.dev](https://github.com/AH-AbdAllah/portfolio)
+**Live at:** [abdallah.dev](https://ah-abdallah.github.io/portfolio/)
 
 ---
 

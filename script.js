@@ -85,8 +85,8 @@ function initDynamicContent() {
   // 1. Render Projects Grid
   const projectsGrid = document.getElementById("projectsGrid");
   if (projectsGrid) {
-    projectsGrid.innerHTML = PORTFOLIO_DATA.projects.map(p => `
-      <div class="project-card">
+    projectsGrid.innerHTML = PORTFOLIO_DATA.projects.map((p, i) => `
+      <div class="project-card reveal" style="transition-delay: ${i * 0.08}s">
         <div class="project-top">
           <h3>${p.name}</h3>
           <p class="project-description">${p.description}</p>
@@ -396,4 +396,152 @@ window.addEventListener("scroll", () => {
 window.addEventListener("DOMContentLoaded", () => {
   initDynamicContent();
   initTerminal();
+  initTypewriter();
+  initScrollReveal();
+  initBackToTop();
+  initStatsCounter();
+  initMobileMenu();
 });
+
+// ============================================
+// Typewriter Effect
+// ============================================
+const TYPEWRITER_STRINGS = [
+  "Computer Engineering Student",
+  "Full-Stack Developer",
+  "REST API Engineer",
+  "Front-End Developer"
+];
+
+function initTypewriter() {
+  const el = document.getElementById("typewriter");
+  if (!el) return;
+  let strIndex = 0, charIndex = 0, isDeleting = false;
+
+  function type() {
+    const current = TYPEWRITER_STRINGS[strIndex];
+    el.textContent = isDeleting
+      ? current.substring(0, charIndex - 1)
+      : current.substring(0, charIndex + 1);
+    isDeleting ? charIndex-- : charIndex++;
+
+    let speed = isDeleting ? 45 : 75;
+    if (!isDeleting && charIndex === current.length) {
+      speed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      strIndex = (strIndex + 1) % TYPEWRITER_STRINGS.length;
+      speed = 350;
+    }
+    setTimeout(type, speed);
+  }
+  type();
+}
+
+// ============================================
+// Scroll Reveal (IntersectionObserver)
+// ============================================
+function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+}
+
+// ============================================
+// Back to Top
+// ============================================
+function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  if (!btn) return;
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("visible", window.scrollY > 400);
+  });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ============================================
+// Stats Counter Animation
+// ============================================
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const duration = 1400;
+  const steps = Math.ceil(duration / 16);
+  const increment = target / steps;
+  let current = 0;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      el.textContent = target;
+      clearInterval(timer);
+    } else {
+      el.textContent = Math.floor(current);
+    }
+  }, 16);
+}
+
+function initStatsCounter() {
+  const statsEl = document.querySelector(".hero-stats");
+  if (!statsEl) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll(".stat-num").forEach(animateCounter);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(statsEl);
+}
+
+// ============================================
+// Copy Email to Clipboard
+// ============================================
+function copyEmail(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  const btn = document.getElementById("copyEmailBtn");
+  if (!btn) return;
+  navigator.clipboard.writeText("abdabohelal@gmail.com").then(() => {
+    btn.classList.add("copied");
+    setTimeout(() => btn.classList.remove("copied"), 2200);
+  });
+}
+
+// ============================================
+// Hamburger Mobile Menu
+// ============================================
+function initMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobileNav");
+  if (!hamburger || !mobileNav) return;
+
+  hamburger.addEventListener("click", () => {
+    const isOpen = hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open", isOpen);
+    hamburger.setAttribute("aria-expanded", isOpen);
+  });
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+}
+
+function closeMobileMenu() {
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobileNav");
+  if (hamburger) { hamburger.classList.remove("open"); hamburger.setAttribute("aria-expanded", false); }
+  if (mobileNav) mobileNav.classList.remove("open");
+}
