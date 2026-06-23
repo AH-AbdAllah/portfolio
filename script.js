@@ -6,6 +6,7 @@ const PORTFOLIO_DATA = {
   projects: [
     {
       name: "NEON BOARD",
+      category: "fullstack",
       description: "Premium, high-fidelity real-time collaborative project whiteboard featuring a glassmorphic design and neon accents. Built with a 50,000x50,000 infinite zoom/pan canvas, real-time sync via Server-Sent Events (SSE), draggable/resizable sticky notes, presence tracking, and drag-to-delete mechanics.",
       tech: ["React.js", "Node.js", "Express.js", "Google Firestore", "Server-Sent Events (SSE)", "Vanilla CSS"],
       github: "https://github.com/AH-AbdAllah/NEON-BOARD",
@@ -13,6 +14,7 @@ const PORTFOLIO_DATA = {
     },
     {
       name: "C# Interactive Academy",
+      category: "frontend",
       description: "Interactive visual learning platform for mastering C# and .NET from first principles. Features real-time visualizers for generics, binary trees, stack/queue simulators, memory/GC engines, and a live workbench with a simulated terminal compiler.",
       tech: ["JavaScript", "HTML5", "CSS3", "SVG"],
       github: "https://github.com/AH-AbdAllah/C-",
@@ -20,6 +22,7 @@ const PORTFOLIO_DATA = {
     },
     {
       name: "DevToolBox",
+      category: "frontend",
       description: "Secure, offline-first developer command center. A suite of 19+ client-side tools including a JSON formatter/validator, JWT decoder, Base64 encoder, RSA/AES encryption sandbox, UUID generator, and AI-powered GitHub repo analyzer.",
       tech: ["Next.js", "React.js", "Tailwind CSS", "Web APIs", "Client-Side Cryptography"],
       github: "https://github.com/AH-AbdAllah/DevToolBox",
@@ -27,6 +30,7 @@ const PORTFOLIO_DATA = {
     },
     {
       name: "TaskFlow Enterprise API",
+      category: "fullstack",
       description: "Enterprise-grade project and sprint task management system. Implements PostgreSQL-backed real-time audit logs, Kanban board routing, project analytics dashboards, team membership systems, and JWT-based authentication.",
       tech: ["C#", "ASP.NET Core", "PostgreSQL", "REST API", "Entity Framework Core", "JWT Auth"],
       github: "https://github.com/AH-AbdAllah/Task-Management-Enterprise-API",
@@ -34,6 +38,7 @@ const PORTFOLIO_DATA = {
     },
     {
       name: "Social Media API",
+      category: "fullstack",
       description: "Production-ready social media REST API featuring JWT dual-token auth, personalized feeds, follow system, posts with image uploads (Cloudinary), nested comments, likes, saved posts, and user search. Dual-database architecture using PostgreSQL (Prisma ORM) for relational data and MongoDB (Mongoose) for activity logs.",
       tech: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "JWT Auth", "Cloudinary", "Zod"],
       github: "https://github.com/AH-AbdAllah/Social-Media-API",
@@ -41,6 +46,7 @@ const PORTFOLIO_DATA = {
     },
     {
       name: "ChronoDiff Git Explorer",
+      category: "systems",
       description: "Lightweight git diff renderer and directory timeline comparator, built entirely with vanilla JavaScript for maximum speed. Provides high-performance parsing of git modifications and side-by-side directory diff comparisons.",
       tech: ["JavaScript", "HTML5", "CSS3", "Git API"],
       github: "https://github.com/AH-AbdAllah/ChronoDiff",
@@ -88,17 +94,31 @@ let terminalInput;
 // ----------------------------------------------------
 // Dynamic Page Renderers
 // ----------------------------------------------------
+function getTechTagClass(tech) {
+  const t = tech.toLowerCase();
+  if (["react", "next.js", "tailwind", "javascript", "html5", "css3", "svg", "layouts"].some(x => t.includes(x))) {
+    return "tag-frontend";
+  }
+  if (["c#", "asp.net", "node.js", "express.js", "rest api", "jwt"].some(x => t.includes(x))) {
+    return "tag-backend";
+  }
+  if (["postgresql", "mongodb", "prisma", "sql", "firestore", "cloudinary", "zod"].some(x => t.includes(x))) {
+    return "tag-db";
+  }
+  return "tag-tool";
+}
+
 function initDynamicContent() {
   // 1. Render Projects Grid
   const projectsGrid = document.getElementById("projectsGrid");
   if (projectsGrid) {
     projectsGrid.innerHTML = PORTFOLIO_DATA.projects.map((p, i) => `
-      <div class="project-card reveal" style="transition-delay: ${i * 0.08}s">
+      <div class="project-card reveal" data-category="${p.category}" style="transition-delay: ${i * 0.08}s">
         <div class="project-top">
           <h3>${p.name}</h3>
           <p class="project-description">${p.description}</p>
           <div class="project-tech">
-            ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+            ${p.tech.map(t => `<span class="tech-tag ${getTechTagClass(t)}">${t}</span>`).join('')}
           </div>
         </div>
         <div class="project-links">
@@ -151,6 +171,42 @@ function initDynamicContent() {
       </div>
     `).join('');
   }
+
+  // 4. Initialize Project Filtering
+  initProjectsFilter();
+}
+
+function initProjectsFilter() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+  if (!filterBtns.length) return;
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      
+      const filterValue = btn.dataset.filter;
+      
+      projectCards.forEach(card => {
+        const cat = card.dataset.category;
+        if (filterValue === "all" || cat === filterValue) {
+          card.style.display = "flex";
+          // Small delay to trigger CSS transitions
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, 30);
+        } else {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(12px)";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 200);
+        }
+      });
+    });
+  });
 }
 
 // ----------------------------------------------------
@@ -248,6 +304,17 @@ function executeCommand(inputString) {
 function focusTerminal() {
   if (terminalInput) {
     terminalInput.focus();
+  }
+}
+
+function runShortcut(cmd, event) {
+  if (event) event.stopPropagation();
+  const inputEl = document.getElementById("terminalInput");
+  if (inputEl) {
+    inputEl.value = cmd;
+    executeCommand(cmd);
+    inputEl.value = "";
+    focusTerminal();
   }
 }
 

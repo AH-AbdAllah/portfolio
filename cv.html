@@ -332,6 +332,30 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
+    .tag.tag-frontend {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    .tag.tag-backend {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #065f46;
+    }
+
+    .tag.tag-db {
+      background: #f5f3ff;
+      border-color: #ddd6fe;
+      color: #5b21b6;
+    }
+
+    .tag.tag-tool {
+      background: #fffbeb;
+      border-color: #fde68a;
+      color: #92400e;
+    }
+
     /* ========== EDUCATION ========== */
     .edu-item {
       display: grid;
@@ -526,12 +550,12 @@
 
         <div class="sidebar-item">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>[Your Phone Number]</span>
+          <span>Available on Request</span>
         </div>
 
         <div class="sidebar-item">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>[Your Location]</span>
+          <span>Haifa, Israel</span>
         </div>
 
         <div class="sidebar-item">
@@ -644,7 +668,7 @@
             </div>
             <p class="project-desc">Premium, high-fidelity real-time collaborative project whiteboard featuring a glassmorphic design and neon accents. Built with a 50,000x50,000 infinite zoom/pan canvas, real-time synchronization via Server-Sent Events (SSE), draggable/resizable sticky notes, presence tracking, and drag-to-delete mechanics.</p>
             <div class="project-tags">
-              <span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Google Firestore</span><span class="tag">SSE</span><span class="tag">Vanilla CSS</span>
+              <span class="tag tag-frontend">React.js</span><span class="tag tag-backend">Node.js</span><span class="tag tag-backend">Express.js</span><span class="tag tag-db">Google Firestore</span><span class="tag tag-backend">SSE</span><span class="tag tag-frontend">Vanilla CSS</span>
             </div>
           </div>
 
@@ -658,7 +682,7 @@
             </div>
             <p class="project-desc">Secure, offline-first developer intelligence platform with 19+ client-side tools: JSON formatter/validator, JWT decoder, Base64 encoder, RSA/AES encryption sandbox, UUID generator, IPv4 subnet calculator, and AI-powered GitHub repo analyzer.</p>
             <div class="project-tags">
-              <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind CSS</span><span class="tag">Web Crypto API</span><span class="tag">Gemini AI</span>
+              <span class="tag tag-frontend">Next.js</span><span class="tag tag-frontend">React</span><span class="tag tag-frontend">Tailwind CSS</span><span class="tag tag-tool">Web Crypto API</span><span class="tag tag-tool">Gemini AI</span>
             </div>
           </div>
 
@@ -672,7 +696,7 @@
             </div>
             <p class="project-desc">Production-ready enterprise API for project and sprint management. Implements Kanban board routing, PostgreSQL-backed real-time audit logs, project analytics dashboards, team membership systems, and dual-token JWT authentication.</p>
             <div class="project-tags">
-              <span class="tag">C#</span><span class="tag">ASP.NET Core</span><span class="tag">PostgreSQL</span><span class="tag">Entity Framework</span><span class="tag">JWT Auth</span><span class="tag">REST API</span>
+              <span class="tag tag-backend">C#</span><span class="tag tag-backend">ASP.NET Core</span><span class="tag tag-db">PostgreSQL</span><span class="tag tag-backend">Entity Framework</span><span class="tag tag-backend">JWT Auth</span><span class="tag tag-backend">REST API</span>
             </div>
           </div>
 
@@ -686,7 +710,7 @@
             </div>
             <p class="project-desc">Production-ready social media REST API with dual-database architecture. Features JWT dual-token auth, personalized feeds, follow system, image uploads via Cloudinary, nested comments, likes, saved posts, and full-text search.</p>
             <div class="project-tags">
-              <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Prisma ORM</span><span class="tag">Cloudinary</span><span class="tag">Zod</span>
+              <span class="tag tag-backend">Node.js</span><span class="tag tag-backend">Express.js</span><span class="tag tag-db">PostgreSQL</span><span class="tag tag-db">MongoDB</span><span class="tag tag-db">Prisma ORM</span><span class="tag tag-tool">Cloudinary</span><span class="tag tag-backend">Zod</span>
             </div>
           </div>
 
@@ -700,7 +724,7 @@
             </div>
             <p class="project-desc">Interactive visual learning platform for mastering C# and .NET. Features real-time visualizers for generic nodes, binary trees, stack/queue simulators, memory/GC engines, and a live workbench with simulated terminal compiler.</p>
             <div class="project-tags">
-              <span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SVG</span>
+              <span class="tag tag-frontend">JavaScript</span><span class="tag tag-frontend">HTML5</span><span class="tag tag-frontend">CSS3</span><span class="tag tag-frontend">SVG</span>
             </div>
           </div>
 
@@ -713,7 +737,7 @@
             </div>
             <p class="project-desc">Lightweight vanilla-JS git diff renderer and directory timeline comparator. Provides high-performance parsing of git modifications and side-by-side directory diff comparisons with zero dependencies.</p>
             <div class="project-tags">
-              <span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Git API</span>
+              <span class="tag tag-frontend">JavaScript</span><span class="tag tag-frontend">HTML5</span><span class="tag tag-frontend">CSS3</span><span class="tag tag-tool">Git API</span>
             </div>
           </div>
 
@@ -736,5 +760,15 @@
 
     </main>
   </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('print') === 'true') {
+        setTimeout(() => {
+          window.print();
+        }, 800);
+      }
+    });
+  </script>
 </body>
 </html>

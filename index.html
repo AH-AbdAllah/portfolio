@@ -105,6 +105,9 @@
       <a href="cv.html" target="_blank" class="btn btn-secondary">
         <i class="fa-solid fa-file-lines"></i> View CV
       </a>
+      <a href="cv.html?print=true" target="_blank" class="btn btn-secondary">
+        <i class="fa-solid fa-file-pdf"></i> Download PDF CV
+      </a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
@@ -139,6 +142,16 @@
         <div style="width: 48px;"></div>
       </div>
       
+      <div class="terminal-shortcuts">
+        <span class="shortcut-label"><i class="fa-solid fa-bolt"></i> Quick Commands:</span>
+        <button class="shortcut-btn" onclick="runShortcut('help', event)">help</button>
+        <button class="shortcut-btn" onclick="runShortcut('about', event)">about</button>
+        <button class="shortcut-btn" onclick="runShortcut('projects', event)">projects</button>
+        <button class="shortcut-btn" onclick="runShortcut('skills', event)">skills</button>
+        <button class="shortcut-btn" onclick="runShortcut('contact', event)">contact</button>
+        <button class="shortcut-btn" onclick="runShortcut('clear', event)">clear</button>
+      </div>
+      
       <div class="terminal-output" id="terminalOutput">
         <!-- Lines will be dynamically generated here -->
       </div>
@@ -162,6 +175,12 @@
   <section id="projects">
     <div class="section-header">
       <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="projects-filter">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="fullstack">Full-Stack & APIs</button>
+      <button class="filter-btn" data-filter="frontend">Frontend & Interactive</button>
+      <button class="filter-btn" data-filter="systems">Systems & Tools</button>
     </div>
     <div class="projects-grid" id="projectsGrid">
       <!-- Dynamically generated projects cards -->
