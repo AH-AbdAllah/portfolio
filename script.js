@@ -5,6 +5,13 @@ const PORTFOLIO_DATA = {
   about: "I am a second-year Computer Engineering student at Al-Qasemi Academic College with a focus on high-performance front-end systems, clean software architectures, and hardware-software integration. Seeking internship and junior software developer opportunities.",
   projects: [
     {
+      name: "NEON BOARD",
+      description: "Premium, high-fidelity real-time collaborative project whiteboard featuring a glassmorphic design and neon accents. Built with a 50,000x50,000 infinite zoom/pan canvas, real-time sync via Server-Sent Events (SSE), draggable/resizable sticky notes, presence tracking, and drag-to-delete mechanics.",
+      tech: ["React.js", "Node.js", "Express.js", "Google Firestore", "Server-Sent Events (SSE)", "Vanilla CSS"],
+      github: "https://github.com/AH-AbdAllah/NEON-BOARD",
+      live: "https://neon-board.onrender.com/"
+    },
+    {
       name: "C# Interactive Academy",
       description: "Interactive visual learning platform for mastering C# and .NET from first principles. Features real-time visualizers for generics, binary trees, stack/queue simulators, memory/GC engines, and a live workbench with a simulated terminal compiler.",
       tech: ["JavaScript", "HTML5", "CSS3", "SVG"],

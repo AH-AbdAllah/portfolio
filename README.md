@@ -62,6 +62,7 @@ portfolio/
 
 | Project | Tech | Links |
 |---|---|---|
+| **NEON BOARD** | React, Node.js, Express, Firestore, SSE | [GitHub](https://github.com/AH-AbdAllah/NEON-BOARD) · [Live](https://neon-board.onrender.com/) |
 | **C# Interactive Academy** | JS, HTML5, CSS3, SVG | [GitHub](https://github.com/AH-AbdAllah/C-) · [Live](https://csharp-five.vercel.app/) |
 | **DevToolBox** | Next.js, React, Tailwind, Web APIs | [GitHub](https://github.com/AH-AbdAllah/DevToolBox) · [Live](https://dev-tool-box-chi.vercel.app) |
 | **TaskFlow Enterprise API** | C#, ASP.NET Core, PostgreSQL, JWT | [GitHub](https://github.com/AH-AbdAllah/Task-Management-Enterprise-API) · [Live](https://task-management-api-xxiu.onrender.com) |
