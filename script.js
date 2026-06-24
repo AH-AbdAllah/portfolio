@@ -43,14 +43,6 @@ const PORTFOLIO_DATA = {
       tech: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "JWT Auth", "Cloudinary", "Zod"],
       github: "https://github.com/AH-AbdAllah/Social-Media-API",
       live: "https://social-media-api-t4ky.onrender.com"
-    },
-    {
-      name: "ChronoDiff Git Explorer",
-      category: "systems",
-      description: "Lightweight git diff renderer and directory timeline comparator, built entirely with vanilla JavaScript for maximum speed. Provides high-performance parsing of git modifications and side-by-side directory diff comparisons.",
-      tech: ["JavaScript", "HTML5", "CSS3", "Git API"],
-      github: "https://github.com/AH-AbdAllah/ChronoDiff",
-      live: null
     }
   ],
   skills: {

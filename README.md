@@ -67,7 +67,6 @@ portfolio/
 | **DevToolBox** | Next.js, React, Tailwind, Web APIs | [GitHub](https://github.com/AH-AbdAllah/DevToolBox) · [Live](https://dev-tool-box-chi.vercel.app) |
 | **TaskFlow Enterprise API** | C#, ASP.NET Core, PostgreSQL, JWT | [GitHub](https://github.com/AH-AbdAllah/Task-Management-Enterprise-API) · [Live](https://task-management-api-xxiu.onrender.com) |
 | **Social Media API** | Node.js, Express, PostgreSQL, MongoDB | [GitHub](https://github.com/AH-AbdAllah/Social-Media-API) · [Live](https://social-media-api-t4ky.onrender.com) |
-| **ChronoDiff Git Explorer** | JavaScript, HTML5, CSS3 | [GitHub](https://github.com/AH-AbdAllah/ChronoDiff) |
 
 ---
 
