@@ -1,6 +1,14 @@
 # 🚀 Abdallah Abo Helal — Developer Portfolio
 
-A modern, dark-themed personal portfolio website featuring an **interactive CLI terminal**, a real projects showcase, skills grid, timeline, and a fully functional contact form.
+<div align="center">
+  
+  [![GitHub Languages](https://img.shields.io/github/languages/top/AH-AbdAllah/portfolio?color=00f2fe&style=flat-square)](https://github.com/AH-AbdAllah/portfolio)
+  [![GitHub Repository Size](https://img.shields.io/github/repo-size/AH-AbdAllah/portfolio?color=4facfe&style=flat-square)](https://github.com/AH-AbdAllah/portfolio)
+  [![License](https://img.shields.io/github/license/AH-AbdAllah/portfolio?color=a855f7&style=flat-square)](https://opensource.org/licenses/MIT)
+
+</div>
+
+A modern, dark-themed personal portfolio website featuring an **interactive CLI terminal**, custom interactive animations, and a structured developer resume showcase.
 
 **Live at:** [abdallah.dev](https://ah-abdallah.github.io/portfolio/)
 
@@ -8,13 +16,16 @@ A modern, dark-themed personal portfolio website featuring an **interactive CLI 
 
 ## ✨ Features
 
-- 🖥️ **Interactive CLI Terminal** — Type commands (`help`, `about`, `projects`, `skills`, `contact`, `clear`) to explore the portfolio
-- 📁 **Projects Section** — Dynamically rendered cards for all featured projects with GitHub & Live Demo links
-- 🛠️ **Skills Grid** — Categorized technical skills (Frontend / Backend / Tools)
-- 🕐 **Timeline** — Education and experience milestones
-- 📬 **Contact Form** — Real email delivery powered by [Formspree](https://formspree.io)
-- 🎨 **Dark Glassmorphism Design** — Cyan/blue gradient theme with smooth micro-animations
-- 📱 **Fully Responsive** — Mobile, tablet, and desktop layouts
+- 🖥️ **Interactive CLI Terminal** — Type commands (`help`, `about`, `projects`, `skills`, `contact`, `clear`) to explore the portfolio.
+- 📁 **Projects Section** — Dynamically rendered cards with GitHub & Live Demo links.
+- 📐 **3D Perspective Tilt** — Cards tilt dynamically by up to 5° responding to mouse movements.
+- 🌈 **Custom Accent Branding** — Each featured project card is styled with its own distinct accent color glow.
+- 🛠️ **Vibrant Skills Grid** — Technical skills categorized and color-coded based on technology type.
+- 🕐 **Timeline Section** — Animated milestones detailing academic and project progress.
+- 📬 **Contact Form** — Client-side validation with real email delivery powered by [Formspree](https://formspree.io).
+- 🎨 **Premium UI Design** — Fixed ambient radial gradients in the background combined with custom glassmorphism components.
+- 📱 **Fully Responsive** — Stretched layout optimized for desktop, tablet, and mobile browsers.
+- 📈 **Scroll Progress Indicator** — Responsive progress bar showing real-time reading progress.
 
 ---
 
@@ -37,10 +48,11 @@ A modern, dark-themed personal portfolio website featuring an **interactive CLI 
 
 ```
 portfolio/
-├── index.html       # Main HTML structure & SEO meta tags
-├── style.css        # Design system tokens, layout, components
-├── script.js        # Data layer, terminal engine, dynamic renderers
-└── README.md        # This file
+├── index.html       # Main HTML structure, landing sections & SEO tags
+├── cv.html          # Professional web-based and printable CV page
+├── style.css        # Custom CSS variables, glassmorphism UI & layout
+├── script.js        # Dynamic card renderers, CLI router & interactions
+└── README.md        # Repository documentation
 ```
 
 ---
@@ -110,7 +122,7 @@ const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", { ... });
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](https://opensource.org/licenses/MIT).
 
 ---
 

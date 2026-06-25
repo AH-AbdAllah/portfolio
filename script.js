@@ -10,7 +10,8 @@ const PORTFOLIO_DATA = {
       description: "Premium, high-fidelity real-time collaborative project whiteboard featuring a glassmorphic design and neon accents. Built with a 50,000x50,000 infinite zoom/pan canvas, real-time sync via Server-Sent Events (SSE), draggable/resizable sticky notes, presence tracking, and drag-to-delete mechanics.",
       tech: ["React.js", "Node.js", "Express.js", "Google Firestore", "Server-Sent Events (SSE)", "Vanilla CSS"],
       github: "https://github.com/AH-AbdAllah/NEON-BOARD",
-      live: "https://neon-board.onrender.com/"
+      live: "https://neon-board.onrender.com/",
+      accent: "#ec4899"
     },
     {
       name: "C# Interactive Academy",
@@ -18,7 +19,8 @@ const PORTFOLIO_DATA = {
       description: "Interactive visual learning platform for mastering C# and .NET from first principles. Features real-time visualizers for generics, binary trees, stack/queue simulators, memory/GC engines, and a live workbench with a simulated terminal compiler.",
       tech: ["JavaScript", "HTML5", "CSS3", "SVG"],
       github: "https://github.com/AH-AbdAllah/C-",
-      live: "https://csharp-five.vercel.app/"
+      live: "https://csharp-five.vercel.app/",
+      accent: "#a855f7"
     },
     {
       name: "DevToolBox",
@@ -26,7 +28,8 @@ const PORTFOLIO_DATA = {
       description: "Secure, offline-first developer command center. A suite of 19+ client-side tools including a JSON formatter/validator, JWT decoder, Base64 encoder, RSA/AES encryption sandbox, UUID generator, and AI-powered GitHub repo analyzer.",
       tech: ["Next.js", "React.js", "Tailwind CSS", "Web APIs", "Client-Side Cryptography"],
       github: "https://github.com/AH-AbdAllah/DevToolBox",
-      live: "https://dev-tool-box-chi.vercel.app"
+      live: "https://dev-tool-box-chi.vercel.app",
+      accent: "#10b981"
     },
     {
       name: "TaskFlow Enterprise API",
@@ -34,7 +37,8 @@ const PORTFOLIO_DATA = {
       description: "Enterprise-grade project and sprint task management system. Implements PostgreSQL-backed real-time audit logs, Kanban board routing, project analytics dashboards, team membership systems, and JWT-based authentication.",
       tech: ["C#", "ASP.NET Core", "PostgreSQL", "REST API", "Entity Framework Core", "JWT Auth"],
       github: "https://github.com/AH-AbdAllah/Task-Management-Enterprise-API",
-      live: "https://task-management-api-xxiu.onrender.com"
+      live: "https://task-management-api-xxiu.onrender.com",
+      accent: "#3b82f6"
     },
     {
       name: "Social Media API",
@@ -42,7 +46,8 @@ const PORTFOLIO_DATA = {
       description: "Production-ready social media REST API featuring JWT dual-token auth, personalized feeds, follow system, posts with image uploads (Cloudinary), nested comments, likes, saved posts, and user search. Dual-database architecture using PostgreSQL (Prisma ORM) for relational data and MongoDB (Mongoose) for activity logs.",
       tech: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Prisma ORM", "JWT Auth", "Cloudinary", "Zod"],
       github: "https://github.com/AH-AbdAllah/Social-Media-API",
-      live: "https://social-media-api-t4ky.onrender.com"
+      live: "https://social-media-api-t4ky.onrender.com",
+      accent: "#f43f5e"
     }
   ],
   skills: {
@@ -105,7 +110,7 @@ function initDynamicContent() {
   const projectsGrid = document.getElementById("projectsGrid");
   if (projectsGrid) {
     projectsGrid.innerHTML = PORTFOLIO_DATA.projects.map((p, i) => `
-      <div class="project-card reveal" data-category="${p.category}" style="transition-delay: ${i * 0.08}s">
+      <div class="project-card reveal" data-category="${p.category}" style="--project-color: ${p.accent}; --project-color-glow: ${p.accent}18; transition-delay: ${i * 0.08}s">
         <div class="project-top">
           <h3>${p.name}</h3>
           <p class="project-description">${p.description}</p>
@@ -123,28 +128,31 @@ function initDynamicContent() {
         </div>
       </div>
     `).join('');
+
+    // Initialize 3D Tilt Effect
+    initTiltEffect();
   }
 
   // 2. Render Skills Grid
   const skillsWrapper = document.getElementById("skillsWrapper");
   if (skillsWrapper) {
     skillsWrapper.innerHTML = `
-      <div class="skills-category">
+      <div class="skills-category reveal" style="transition-delay: 0.1s">
         <h3><i class="fa-solid fa-laptop-code"></i> Frontend</h3>
         <div class="skills-list">
-          ${PORTFOLIO_DATA.skills.frontend.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+          ${PORTFOLIO_DATA.skills.frontend.map(s => `<span class="skill-badge ${getTechTagClass(s)}">${s}</span>`).join('')}
         </div>
       </div>
-      <div class="skills-category">
+      <div class="skills-category reveal" style="transition-delay: 0.2s">
         <h3><i class="fa-solid fa-server"></i> Backend & Systems</h3>
         <div class="skills-list">
-          ${PORTFOLIO_DATA.skills.backend.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+          ${PORTFOLIO_DATA.skills.backend.map(s => `<span class="skill-badge ${getTechTagClass(s)}">${s}</span>`).join('')}
         </div>
       </div>
-      <div class="skills-category">
+      <div class="skills-category reveal" style="transition-delay: 0.3s">
         <h3><i class="fa-solid fa-screwdriver-wrench"></i> Hardware & Tools</h3>
         <div class="skills-list">
-          ${PORTFOLIO_DATA.skills.tools.map(s => `<span class="skill-badge">${s}</span>`).join('')}
+          ${PORTFOLIO_DATA.skills.tools.map(s => `<span class="skill-badge ${getTechTagClass(s)}">${s}</span>`).join('')}
         </div>
       </div>
     `;
@@ -153,8 +161,8 @@ function initDynamicContent() {
   // 3. Render Timeline
   const timelineContainer = document.getElementById("timelineContainer");
   if (timelineContainer) {
-    timelineContainer.innerHTML = PORTFOLIO_DATA.timeline.map(item => `
-      <div class="timeline-item">
+    timelineContainer.innerHTML = PORTFOLIO_DATA.timeline.map((item, i) => `
+      <div class="timeline-item reveal" style="transition-delay: ${i * 0.1}s">
         <div class="timeline-dot"></div>
         <div class="timeline-time">${item.year}</div>
         <h3 class="timeline-title">${item.title}</h3>
@@ -457,6 +465,20 @@ window.addEventListener("scroll", () => {
 });
 
 // ----------------------------------------------------
+// Scroll Progress Bar Handler
+// ----------------------------------------------------
+function initScrollProgress() {
+  const progressEl = document.getElementById("scrollProgress");
+  if (!progressEl) return;
+  window.addEventListener("scroll", () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    progressEl.style.width = scrolled + "%";
+  });
+}
+
+// ----------------------------------------------------
 // App Initialization
 // ----------------------------------------------------
 window.addEventListener("DOMContentLoaded", () => {
@@ -467,6 +489,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initBackToTop();
   initStatsCounter();
   initMobileMenu();
+  initScrollProgress();
 });
 
 // ============================================
@@ -610,4 +633,34 @@ function closeMobileMenu() {
   const mobileNav = document.getElementById("mobileNav");
   if (hamburger) { hamburger.classList.remove("open"); hamburger.setAttribute("aria-expanded", false); }
   if (mobileNav) mobileNav.classList.remove("open");
+}
+
+// ============================================
+// 3D Card Tilt Effect
+// ============================================
+function initTiltEffect() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const cards = document.querySelectorAll(".project-card");
+  
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((centerY - y) / centerY) * 5; // Max 5 degrees
+      const rotateY = ((x - centerX) / centerX) * 5;
+      
+      card.style.transition = "none";
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+    
+    card.addEventListener("mouseleave", () => {
+      card.style.transition = "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease";
+      card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+    });
+  });
 }
